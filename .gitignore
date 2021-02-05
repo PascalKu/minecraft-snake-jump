@@ -1,0 +1,5 @@
+.idea/
+.git/
+
+# Test directories
+testServer/
