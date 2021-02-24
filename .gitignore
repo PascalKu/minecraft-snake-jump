@@ -5,3 +5,5 @@ target/
 # Test directories
 testServer/
 deploy.sh
+
+*.iml
