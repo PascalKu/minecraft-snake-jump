@@ -9,6 +9,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SnakeJump extends JavaPlugin implements Listener {
 
     @Override
@@ -24,38 +27,20 @@ public class SnakeJump extends JavaPlugin implements Listener {
 
         final World world = Bukkit.getWorld("world");
 
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -45.5, 70, -82.5).getBlock()), 0L, 10L);
+        final List<Snake> snakeList = new ArrayList<>();
+        snakeList.add(new Snake(new Location(world, -45.5, 70, -82.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -45.5, 70, -88.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -41.5, 72, -91.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -41.5, 73, -88.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -36.5, 71, -87.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -41.5, 74, -98.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -40.5, 75, -104.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -36.5, 79, -99.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -27.5, 80, -97.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -27.5, 80, -95.5).getBlock()));
+        snakeList.add(new Snake(new Location(world, -21.5, 84, -86.5).getBlock()));
 
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -45.5, 70, -88.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -41.5, 72, -91.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -41.5, 73, -88.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -36.5, 71, -87.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -41.5, 74, -98.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -40.5, 75, -104.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -36.5, 79, -99.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -27.5, 80, -97.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -27.5, 80, -95.5).getBlock()), 0L, 10L);
-
-        // Entrypoint
-        Bukkit.getScheduler().runTaskTimer(this, new Snake(new Location(world, -21.5, 84, -86.5).getBlock()), 0L, 10L);
+        Bukkit.getScheduler().runTaskTimer(this, () -> snakeList.forEach(Snake::run), 0L, 10L);
     }
 
     @Override
